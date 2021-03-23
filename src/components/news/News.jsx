@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 
 const apiUrl = process.env.REACT_APP_API_URL;
+const url = process.env.REACT_APP_API_ENDPOINT;
 
 export function News({id}) {
   const [getting, setGot] = useState(false);
@@ -23,10 +24,10 @@ export function News({id}) {
         setItems(json);  
         setGot(true); 
       }catch(e){
+        setError(e);
+        setGot(true);
         <Redirect to="/ERROR" />
       }
-
-
     }
     fetchData();
   },[])
@@ -38,6 +39,7 @@ export function News({id}) {
   else{
     return <div>
       {items.items.map(it => (<p>{it.title}</p>))}
+      <a href={url} >Til Baka</a>
     </div>
   }
 }
