@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const apiUrl = process.env.REACT_APP_API_URL;
+const hostname = process.env.REACT_APP_API_ENDPOINT;
 
 export function NewsList() {
   // TODO sækja yfirlit fréttaflokka
@@ -19,8 +20,6 @@ export function NewsList() {
 
       try {
         const result = await fetch(apiUrl);
-
-        // Getum líka haft flóknari villumeðhöndlun hér, gripið 4xx villur sér eða eitthvað þannig
         if (!result.ok) {
           throw new Error('result not ok');
         }
@@ -28,12 +27,11 @@ export function NewsList() {
         json = await result.json();
         for(let i=0;i<json.length;i++){
             const res = await fetch(json[i].url);
-              // Getum líka haft flóknari villumeðhöndlun hér, gripið 4xx villur sér eða eitthvað þannig
             if (!res.ok) {
               throw new Error('result not ok');
-            }
-    
+            }    
             var jason = await res.json();
+            jason['id'] = json[i].id;
             items.push(jason);
         }         
         } catch (e) {
@@ -44,14 +42,7 @@ export function NewsList() {
         }
       }
     fetchData();
-    // þar sem við notum báðar af þessum state breytum, þá eru þau dependecy fyrir þetta effect
-    // ef annaðhvor breytist, þá keyrir effect aftur, annars ekki
   }, []);
-
-
-
-
-
 
   if (error) {
     return <p>ERROR</p>
@@ -64,11 +55,12 @@ export function NewsList() {
                 id => 
                   <div class="topics-items">
                     <h4>{id.title}</h4>
-                    <p>{id.items[0].title}</p>
-                    <p>{id.items[1].title}</p>
-                    <p>{id.items[2].title}</p>
-                    <p>{id.items[3].title}</p>
-                    <p>{id.items[4].title}</p>
+                    <a href={id.items[0].link}><p>{id.items[0].title}</p></a>
+                    <a href={id.items[1].link}><p>{id.items[1].title}</p></a>
+                    <a href={id.items[2].link}><p>{id.items[2].title}</p></a>
+                    <a href={id.items[3].link}><p>{id.items[3].title}</p></a>
+                    <a href={id.items[4].link}><p>{id.items[4].title}</p></a>
+                    <a href={hostname+'id/'+id.id}>Sjá allar fréttir</a>
                   </div>
               )}
           </div>
