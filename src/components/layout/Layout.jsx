@@ -1,6 +1,12 @@
+import { render } from "react-dom";
 
 // TODO sækja Sass
-
-export function Layout({ /* todo senda inn efni */ }) {
-  // TODO setja upp layout fyrir vef
+/* todo senda inn efni */
+export function Layout({ }) {
+  return(
+    <div>
+      <h1>Rúv Fréttir</h1>
+      <a href="https://www.ruv.is/">Fréttir frá Rúv</a>
+    </div>
+  ); 
 }

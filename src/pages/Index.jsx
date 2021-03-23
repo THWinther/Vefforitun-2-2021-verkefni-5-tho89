@@ -2,7 +2,7 @@
 export function Index() {
   return (
   <div>
-    <p>TEST</p>
+    <p>NEWS CATEGORIES</p>
   </div>
   )
 }

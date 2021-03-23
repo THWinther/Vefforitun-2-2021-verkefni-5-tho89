@@ -9,5 +9,5 @@ export function NotFound() {
       Go Back
     </Link>
   </div>
-  )
+  );
 }
