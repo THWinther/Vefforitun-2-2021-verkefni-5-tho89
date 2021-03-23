@@ -1,4 +1,6 @@
 
 export function NewsPage() {
-  // TODO útfæra fréttasíðu
+  return(
+    <p>NEWS</p>
+  );
 }

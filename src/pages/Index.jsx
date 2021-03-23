@@ -1,4 +1,8 @@
 
 export function Index() {
-  // TODO útfæra yfirlitssíðu
+  return (
+  <div>
+    <p>TEST</p>
+  </div>
+  )
 }
