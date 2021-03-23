@@ -16,8 +16,6 @@ export function NewsList() {
       setIsLoaded(false);
       setError(null);
       let json;
-
-
       try {
         const result = await fetch(apiUrl);
         if (!result.ok) {
@@ -45,7 +43,7 @@ export function NewsList() {
   }, []);
 
   if (error) {
-    return <p>ERROR</p>
+    return <p>ERROR loading data please try again</p>
   } else if (!isLoaded) {
     return <div>Loading.....</div>
   } else {
