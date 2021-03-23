@@ -1,5 +1,3 @@
-import { render } from "react-dom";
-
 // TODO sækja Sass
 /* todo senda inn efni */
 export function Layout({children}) {

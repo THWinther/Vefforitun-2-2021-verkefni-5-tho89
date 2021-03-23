@@ -1,9 +1,9 @@
-import { Layout } from "../components/layout/Layout";
+import { NewsList } from "../components/news-list/NewsList";
 
 export function Index() {
   return (
     <div>
-      <p>NEWS CATEGORIES</p>
+      {NewsList()}
     </div>
   )
 }
