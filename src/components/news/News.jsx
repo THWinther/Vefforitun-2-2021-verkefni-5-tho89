@@ -17,12 +17,15 @@ export function News({id}) {
       try{
         const result = await fetch(apiUrl+id);
         if (!result.ok) {
-          <Redirect to="/ERROR" />;
+          setError(result);
+          setGot(true);
         }
-
-        json = await result.json();
-        setItems(json);  
-        setGot(true); 
+        else{
+          json = await result.json();
+          setItems(json);  
+          setGot(true); 
+        }
+        
       }catch(e){
         setError(e);
         setGot(true);
@@ -33,13 +36,15 @@ export function News({id}) {
   },[])
 
 
-  console.log(id);
+
   if(!getting) return <p>Loading...</p>
-  else if(error) return <p>Error</p>
-  else{
-    return <div>
-      {items.items.map(it => (<p>{it.title}</p>))}
+  else if(error) return <Redirect to="/ERROR" />
+  else {
+    return <div class="display-topic">
+      {items.items.map(it => (<a href={it.link}><p>{it.title}</p></a>))}
       <a href={url} >Til Baka</a>
     </div>
   }
 }
+
+//<a href={id.items[0].link}><p>{id.items[0].title}</p></a>

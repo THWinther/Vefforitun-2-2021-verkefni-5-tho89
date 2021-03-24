@@ -1,5 +1,4 @@
-// TODO sækja Sass
-/* todo senda inn efni */
+import '../../style/style.scss';
 export function Layout({children}) {
   return(
     <div>

@@ -8,7 +8,7 @@ export function NewsList() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items] = useState([]);
 
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function NewsList() {
         }
       }
     fetchData();
-  }, []);
+  },[]);
 
   if (error) {
     return <p>ERROR loading data please try again</p>
@@ -58,7 +58,7 @@ export function NewsList() {
                     <a href={id.items[2].link}><p>{id.items[2].title}</p></a>
                     <a href={id.items[3].link}><p>{id.items[3].title}</p></a>
                     <a href={id.items[4].link}><p>{id.items[4].title}</p></a>
-                    <a href={hostname+'id/'+id.id}>Sjá allar fréttir</a>
+                    <a class="topic-items-return-link"href={hostname+'id/'+id.id}>Sjá allar fréttir</a>
                   </div>
               )}
           </div>
